@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <nav><?php require('Pages/nav.html.php') ?></nav>
-    <div><?php require('Pages/lessonsList.html.php') ?></div>
+    <nav><?php require('nav.html.php') ?></nav>
+    <div><?php require('lessonsList.html.php') ?></div>
+
 </body>
 </html>
