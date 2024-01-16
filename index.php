@@ -44,16 +44,17 @@ $result = $conn->query($query);
 if ($result) {
     while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
         echo "<p>ID: {$row['id']} - Tytuł: {$row['tytul']}</p>";
+        // echo "<button onclick='executeLesson({$row['id']})'>Wykonaj</button>";
+        echo "<button onClick=document.location.href='lesson.php?id={$row['id']}'>Wykonaj</button>";
 
         // Sprawdzanie, czy użytkownik jest zalogowany
         if (isset($_SESSION['admin_id']) && $_SESSION['admin_id']) {
             // Przyciski  administratora
             echo "<button onclick='editLesson({$row['id']})'>Edytuj</button>";
             echo "<button onclick='deleteLesson({$row['id']})'>Usuń</button>";
-        } else {
-            // Przycisk niezalogowanego użytkownika
-            echo "<button onclick='executeLesson({$row['id']})'>Wykonaj</button>";
-        }
+        } 
+        
+        
     }
 }
 
