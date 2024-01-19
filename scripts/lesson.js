@@ -40,6 +40,9 @@ function statistics(){
     }
     accuracy = (accuracy/letters.length)*100;
     saveStatistics(accuracy, timer);
+    let time = msToMins(timer);
+    alert(`Lekcja ukończona. Czas: ${time["min"]}m ${time["sec"]}s ${time["ms"]}ms Poprawność: ${accuracy.toFixed(2)}`);
+    input.setAttribute("disabled", "");
 }
 
 function saveStatistics(accuracy, time){
