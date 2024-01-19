@@ -20,6 +20,7 @@ require_once 'db_connection.php';
     <title>Dream-Team</title>
 </head>
 <body>
+<nav>
 
 <?php
 // Sprawdzanie, czy użytkownik jest zalogowany
@@ -28,11 +29,16 @@ if (isset($_SESSION['admin_id']) && $_SESSION['admin_id']) {
     echo "<form method='post' action=''>
             <button type='submit' name='logout'>Wyloguj</button>
           </form>";
+ 
+    // echo "<button onclick=document.location.href='addLesson.php'>Dodaj lekcję</button>";
+    echo "<button onClick=document.location.href='edit.php?&action=add'>Dodaj lekcję</button>";
 } else {
     // Przycisk zaloguj jeśli nie
     echo "<button onclick=\"location.href='login.php'\">Zaloguj</button>";
 }
 ?>
+
+</nav>
 <h1>Lista lekcji</h1>
 
 <?php
@@ -50,7 +56,7 @@ if ($result) {
         // Sprawdzanie, czy użytkownik jest zalogowany
         if (isset($_SESSION['admin_id']) && $_SESSION['admin_id']) {
             // Przyciski  administratora
-            echo "<button onclick='editLesson({$row['id']})'>Edytuj</button>";
+            echo "<button onClick=document.location.href='edit.php?id={$row['id']}&action=edit'>Edytuj</button>";
             echo "<button onclick='deleteLesson({$row['id']})'>Usuń</button>";
         } 
         
@@ -62,20 +68,14 @@ if ($result) {
 
 <!-- !!!!!!!!!! przenieść do pliku scripts/script.js !!!!!!!!!!!!-->
 <script>
-    function editLesson(id) {
-        // Logika edycji lekcji
-        // ...
-    }
+    
 
     function deleteLesson(id) {
         // Logika usuwania lekcji
         // ...
     }
 
-    function executeLesson(id) {
-        // Logika wykonywania lekcji
-        // ...
-    }
+    
 </script>
 
 </body>
